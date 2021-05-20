@@ -36,6 +36,16 @@ app.get("/info", (request, response) => {
     );
 });
 
+app.get("/api/persons/:id", (request, response) => {
+    const id = Number(request.params.id);
+    const person = contacts.find((contact) => contact.id === id);
+    if (person) {
+        response.send(person);
+    } else {
+        response.status(404).end();
+    }
+});
+
 const port = 3001;
 app.listen(port, () => {
     console.log("Working on", port);
