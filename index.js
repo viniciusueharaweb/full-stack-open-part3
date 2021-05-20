@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
-const contacts = [
+let contacts = [
     {
         name: "Arto Hellas",
         number: "040-123456",
@@ -44,6 +44,12 @@ app.get("/api/persons/:id", (request, response) => {
     } else {
         response.status(404).end();
     }
+});
+
+app.delete("/api/persons/:id", (request, response) => {
+    const id = Number(request.params.id);
+    contacts = contacts.filter((contact) => contact.id !== id);
+    response.status(204).end();
 });
 
 const port = 3001;
