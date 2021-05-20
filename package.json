@@ -1,0 +1,19 @@
+{
+  "name": "full-stack-open-part3",
+  "version": "1.0.0",
+  "description": "part 3 of fullstack open course",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "node_modules/.bin/nodemon index.js"
+  },
+  "author": "Vinicius Uehara",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
