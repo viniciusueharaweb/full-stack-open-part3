@@ -29,6 +29,13 @@ app.get("/api/persons", (request, response) => {
     response.send(contacts);
 });
 
+app.get("/info", (request, response) => {
+    const date = new Date();
+    response.send(
+        `<p>Phonebook has info for ${contacts.length} people</p><p>${date}</p>`
+    );
+});
+
 const port = 3001;
 app.listen(port, () => {
     console.log("Working on", port);
