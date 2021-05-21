@@ -52,6 +52,19 @@ app.delete("/api/persons/:id", (request, response) => {
     response.status(204).end();
 });
 
+app.post("/api/persons", (request, response) => {
+    const body = request.body;
+    const newId = Math.floor(Math.random() * 100000);
+
+    const newContact = {
+        name: body.name,
+        number: body.number,
+        id: newId,
+    };
+    contacts = contacts.concat(newContact);
+    response.json(newContact);
+});
+
 const port = 3001;
 app.listen(port, () => {
     console.log("Working on", port);
