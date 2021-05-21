@@ -56,11 +56,24 @@ app.post("/api/persons", (request, response) => {
     const body = request.body;
     const newId = Math.floor(Math.random() * 100000);
 
+    if (!body.name || !body.number) {
+        return response.status(400).json({ error: "name or number missing" });
+    }
+
+    for (let i = 0; i < contacts.length; i++) {
+        if (contacts[i].name === body.name) {
+            return response
+                .status(400)
+                .json({ error: "this name is already in use" });
+        }
+    }
+
     const newContact = {
         name: body.name,
         number: body.number,
         id: newId,
     };
+
     contacts = contacts.concat(newContact);
     response.json(newContact);
 });
